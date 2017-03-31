@@ -1,0 +1,2 @@
+Listado
+<div *ngFor="let item of monedas.itemsObs | async" (click)="monedas.selectItem(item.$key, monedas.form);">{{item.nombre}}</div>

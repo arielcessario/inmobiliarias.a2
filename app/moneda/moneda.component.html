@@ -1,0 +1,39 @@
+<div class="container">
+    <h1>Monedas</h1>
+    <form [formGroup]="formMonedas" novalidate (ngSubmit)="monedas.onSubmit(formMonedas)">
+        <div class="form-group">
+            <label for="">Nombre</label>
+            <input type="text" class="form-control" formControlName="nombre">
+            <small class="text-danger">
+                {{monedas.formErrors['nombre']}}
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="">Simbolo</label>
+            <input type="text" class="form-control" formControlName="simbolo">
+            <small class="text-danger">
+                {{monedas.formErrors['simbolo']}}
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="">Status</label>
+            <input type="text" class="form-control" formControlName="status">
+            <small class="text-danger">
+                {{monedas.formErrors['status']}}
+            </small>
+        </div>
+
+
+        <button type="submit" class="btn btn-default">Submit</button>
+        <div *ngIf="!formMonedas.valid && formMonedas.touched" class="text-danger">
+            'Complete todos los datos obligatorios'
+        </div>
+        <div *ngFor="let event of events" class="margin-20">
+            <pre> {{ event | json }} </pre>
+        </div>
+    </form>
+
+    <moneda-list-component [monedas]="monedas"></moneda-list-component>
+</div>

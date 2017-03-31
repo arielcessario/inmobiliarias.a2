@@ -1,0 +1,16 @@
+<h1>Hello Angular Zarasa!</h1>
+<!--<a routerLink="/monedas">Monedas</a>-->
+<nav-component></nav-component>
+<!--<ul>-->
+<!--<li *ngFor="let item of direcciones.items">-->
+		<!--<input type="text" #updatetext [(ngModel)]="item.numero" />-->
+		<!--<button (click)="direcciones.update(item.$key, item)">Update</button>-->
+		<!--&lt;!&ndash; <button (click)="updateItem(item.$key, item)">Update</button> &ndash;&gt;-->
+		<!--<button (click)="deleteItem(item.$key)">Delete</button>-->
+		<!--&lt;!&ndash; <div *ngFor="let prop of item.propiedad.lista | async"><input type="text" [value]="prop.titulo" /></div> &ndash;&gt;-->
+		<!--<div><input type="text" [value]="(item.propiedad.obs[0] | async)?.titulo" /></div>-->
+	<!--</li>-->
+<!--</ul>-->
+<router-outlet></router-outlet>
+
+<button (click)="get()">get</button>
