@@ -10,18 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var propiedad_model_1 = require("./propiedad/propiedad.model");
-var direccion_model_1 = require("./direccion/direccion.model");
 var angularfire2_1 = require("angularfire2");
 var fire_provider_1 = require("./providers/fire.provider");
 // import { FireCacheProvider } from './fire.provider';
 var AppComponent = (function () {
     function AppComponent(af) {
+        // Este llamado inicializa Firebase
         fire_provider_1.FireFactoryService.init(af);
-        this.direcciones = new direccion_model_1.Direccion('', '', '', '');
-        this.propiedades = new propiedad_model_1.Propiedad();
+        // this.direcciones = new Direccion('','','','');
+        // this.propiedades = new Propiedad();
         // this.monedas = new Moneda();
-        this.direcciones.join(['propiedad']);
+        // this.direcciones.join(['propiedad']);
         // this.propiedades.load();
         // this.propiedad.get()(data => this.direcciones = data);
         // this.direccion.get()(data => {

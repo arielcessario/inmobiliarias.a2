@@ -15,6 +15,8 @@ var app_routes_1 = require("./app.routes");
 var app_component_1 = require("./app.component");
 var core_module_1 = require("./core/core.module");
 var moneda_module_1 = require("./moneda/moneda.module");
+var propiedad_module_1 = require("./propiedad/propiedad.module");
+var general_module_1 = require("./general/general.module");
 var test_pipe_1 = require("./shared/test.pipe");
 var AppModule = (function () {
     function AppModule() {
@@ -30,6 +32,8 @@ AppModule = __decorate([
             app_routes_1.Routing,
             core_module_1.CoreModule,
             moneda_module_1.MonedasModule,
+            propiedad_module_1.PropiedadesModule,
+            general_module_1.GeneralesModule,
             angularfire2_1.AngularFireModule.initializeApp({
                 apiKey: "AIzaSyAbx0mKlgtt4k7qRxTgcmvbJyHD6GjOFDU",
                 authDomain: "inmobiliarias.firebaseapp.com",

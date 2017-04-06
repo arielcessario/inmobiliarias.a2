@@ -9,12 +9,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var moneda_component_1 = require("./moneda/moneda.component");
+var propiedad_component_1 = require("./propiedad/propiedad.component");
 // import { DashboardComponent }   from './dashboard.component';
 // import { HeroesComponent }      from './heroes.component';
 // import { HeroDetailComponent }  from './hero-detail.component';
 var routes = [
     { path: '', redirectTo: '/', pathMatch: 'full' },
     { path: 'monedas', component: moneda_component_1.MonedaComponent },
+    { path: 'propiedades', component: propiedad_component_1.PropiedadComponent },
 ];
 var Routing = (function () {
     function Routing() {

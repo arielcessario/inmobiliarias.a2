@@ -1,2 +1,5 @@
 Listado
-<div *ngFor="let item of monedas.itemsObs | async" (click)="monedas.selectItem(item.$key, monedas.form);">{{item.nombre}}</div>
+<div *ngFor="let item of monedas.itemsObs | async">
+    <span (click)="monedas.selectItem(item.$key, monedas.form);">{{item.nombre}}</span>
+    <button (click)="monedas.remove(item.$key, monedas.form)">Eliminar</button>
+</div>

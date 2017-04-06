@@ -1,6 +1,4 @@
 
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
-
 export class FireCacheProvider {
 	static cache: Array<any>;
 	constructor (){
@@ -10,8 +8,12 @@ export class FireCacheProvider {
 		}
 	}
 
-	public get(): Array<any>{
-		return FireCacheProvider.cache;
+	public get(cache?:string){
+		if(cache != undefined){
+			return FireCacheProvider.cache[cache];
+		}else{
+			return FireCacheProvider.cache;
+		}
 	}
 
 	public set(cache: Array<any>){

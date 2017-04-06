@@ -32,13 +32,14 @@ export class AppComponent implements OnInit {
 
 	constructor(af: AngularFire) {
 
+		// Este llamado inicializa Firebase
 		FireFactoryService.init(af);
 
-		this.direcciones = new Direccion('','','','');
-		this.propiedades = new Propiedad();
+		// this.direcciones = new Direccion('','','','');
+		// this.propiedades = new Propiedad();
 		// this.monedas = new Moneda();
 
-		this.direcciones.join(['propiedad']);
+		// this.direcciones.join(['propiedad']);
 
 		// this.propiedades.load();
 

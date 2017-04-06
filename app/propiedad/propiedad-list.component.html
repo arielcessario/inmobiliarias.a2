@@ -1,0 +1,5 @@
+Listado
+<div *ngFor="let item of propiedades.itemsObs | async">
+    <span (click)="propiedades.selectItem(item.$key, propiedades.form);">{{item.descripcion}}</span>
+    <button (click)="propiedades.remove(item.$key, propiedades.form)">Eliminar</button>
+</div>

@@ -11,6 +11,8 @@ import {Routing} from './app.routes';
 import {AppComponent}    from './app.component';
 import {CoreModule}    from './core/core.module';
 import {MonedasModule}    from './moneda/moneda.module';
+import {PropiedadesModule}    from './propiedad/propiedad.module';
+import {GeneralesModule}    from './general/general.module';
 import {testPipe}        from './shared/test.pipe';
 
 
@@ -22,6 +24,8 @@ import {testPipe}        from './shared/test.pipe';
         Routing,
         CoreModule,
         MonedasModule,
+        PropiedadesModule,
+        GeneralesModule,
         AngularFireModule.initializeApp({
                 apiKey: "AIzaSyAbx0mKlgtt4k7qRxTgcmvbJyHD6GjOFDU",
                 authDomain: "inmobiliarias.firebaseapp.com",

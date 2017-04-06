@@ -6,8 +6,13 @@ var FireCacheProvider = (function () {
             FireCacheProvider.cache = [];
         }
     }
-    FireCacheProvider.prototype.get = function () {
-        return FireCacheProvider.cache;
+    FireCacheProvider.prototype.get = function (cache) {
+        if (cache != undefined) {
+            return FireCacheProvider.cache[cache];
+        }
+        else {
+            return FireCacheProvider.cache;
+        }
     };
     FireCacheProvider.prototype.set = function (cache) {
         FireCacheProvider.cache = cache;
