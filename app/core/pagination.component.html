@@ -1,6 +1,6 @@
 <div>
     <button (click)="prev()">Prev</button>
-    <div><input [formControl]="pageNav" type="text"></div>
+    <div><input [formControl]="pageNav" type="text"> of {{pages}}</div>
     <!--<span>{{page}} of {{pages}}</span>-->
     <button (click)="next()">Next</button>
 </div>
