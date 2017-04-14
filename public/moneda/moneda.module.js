@@ -31,11 +31,16 @@ MonedasModule = __decorate([
     core_1.NgModule({
         imports: [
             common_1.CommonModule,
-            forms_1.ReactiveFormsModule,
+            forms_1.ReactiveFormsModule
+            // MonedaRoutingModule
+            // #enddocregion v1
+            //         HeroRoutingModule
+            // #docregion v1
         ],
         declarations: [
             moneda_component_1.MonedaComponent,
-            moneda_list_component_1.MonedaLisComponent,
+            moneda_list_component_1.MonedaLisComponent
+            // HeroDetailComponent
         ],
         exports: [moneda_component_1.MonedaComponent, moneda_list_component_1.MonedaLisComponent],
         providers: []

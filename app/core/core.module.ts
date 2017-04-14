@@ -3,36 +3,29 @@
 // #docregion v1
 import {NgModule}       from '@angular/core';
 import {CommonModule}   from '@angular/common';
-import {ReactiveFormsModule}    from '@angular/forms';
+import {ReactiveFormsModule}        from '@angular/forms';
 
 import {NavComponent}    from './nav.component';
-// import { MonedaRoutingModule }    from './moneda-routes.module';
-
-// import { HeroListComponent }    from './hero-list.component';
-// import { HeroDetailComponent }  from './hero-detail.component';
-//
-// import { HeroService } from './hero.service';
-
-// #enddocregion v1
-// import { HeroRoutingModule } from './heroes-routing.module';
-
-// #docregion v1
+import {PaginationComponent}    from './pagination.component';
+import {PaginationPipe}    from './pagination.pipe';
+import {PaginationService}    from './pagination.service';
 @NgModule({
     imports: [
         CommonModule,
-        ReactiveFormsModule,
-        // MonedaRoutingModule
-// #enddocregion v1
-//         HeroRoutingModule
-// #docregion v1
+        ReactiveFormsModule
     ],
     declarations: [
         NavComponent,
-        // HeroDetailComponent
+        PaginationComponent,
+        PaginationPipe
     ],
-    exports: [NavComponent],
+    exports: [
+        NavComponent,
+        PaginationComponent,
+        PaginationPipe
+    ],
     providers: [
-        // HeroService
+        PaginationService
     ]
 })
 export class CoreModule {

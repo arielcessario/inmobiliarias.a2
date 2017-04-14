@@ -21,7 +21,7 @@
             <label for="">Moneda</label>
             <!--<input type="text" class="form-control" formControlName="moneda">-->
             <select formControlName="moneda">
-                <option *ngFor="let i of monedas.get()['moneda'] | async" [value]="i.$key">{{i.nombre}}</option>
+                <option *ngFor="let i of monedas.get() | async" [value]="i.$key">{{i.nombre}}</option>
             </select>
             <small class="text-danger">
                 {{propiedades.formErrors['moneda']}}
@@ -42,22 +42,33 @@
         <div formArrayName="general">
             <div *ngFor="let _item of formPropiedades.controls.general.controls; let i = index;">
                 <div [formGroupName]="i">
-                    <input type="text" formControlName="value">
+                    <input type="number" formControlName="value">
                     <!--<input type="text" formControlName="$key">-->
-                    <span>{{propiedades._items[i].nombre}}</span>
+                    <span>{{propiedades._items['general'][i].nombre}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div formArrayName="otro">
+            <div *ngFor="let _item of formPropiedades.controls.otro.controls; let i = index;">
+                <div [formGroupName]="i">
+                    <input type="checkbox" formControlName="value">
+                    <!--<input type="text" formControlName="$bidireccional">-->
+                    <span>{{propiedades._items['otro'][i].nombre}}</span>
                 </div>
             </div>
         </div>
         <!--<div formArrayName="general">-->
-            <!--<div *ngFor="let _item of formPropiedades.controls.general.controls; let i = index;">-->
-                <!--<div [formGroupName]="i">-->
-                    <!--<input type="checkbox" formControlName="value">-->
-                    <!--<span>{{propiedades.items[i].nombre}}</span>-->
-                <!--</div>-->
-            <!--</div>-->
+        <!--<div *ngFor="let _item of formPropiedades.controls.general.controls; let i = index;">-->
+        <!--<div [formGroupName]="i">-->
+        <!--<input type="checkbox" formControlName="value">-->
+        <!--<span>{{propiedades.items[i].nombre}}</span>-->
+        <!--</div>-->
+        <!--</div>-->
         <!--</div>-->
 
 
+        <button type="button" class="btn btn-default" (click)="propiedades.resetForm(formPropiedades)">Refresh</button>
         <button type="submit" class="btn btn-default">Submit</button>
         <div *ngIf="!formPropiedades.valid && formPropiedades.touched" class="text-danger">
             'Complete todos los datos obligatorios'

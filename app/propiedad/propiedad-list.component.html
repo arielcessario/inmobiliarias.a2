@@ -1,5 +1,7 @@
 Listado
-<div *ngFor="let item of propiedades.itemsObs | async">
+
+<div *ngFor="let item of propiedades.get() | async | paginado:3:start">
     <span (click)="propiedades.selectItem(item.$key, propiedades.form);">{{item.descripcion}}</span>
-    <button (click)="propiedades.remove(item.$key, propiedades.form)">Eliminar</button>
+    <button (click)="propiedades.remove(item, propiedades.form)">Eliminar</button>
 </div>
+<pagination-component (paginado)="countChange($event)"></pagination-component>

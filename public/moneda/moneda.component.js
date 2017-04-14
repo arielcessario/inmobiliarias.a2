@@ -17,7 +17,7 @@ var moneda_model_1 = require("./moneda.model");
 var MonedaComponent = (function () {
     function MonedaComponent() {
         this.monedas = new moneda_model_1.Moneda();
-        console.log(this.monedas.itemsObs.subscribe(function (data) { return console.log(data); }));
+        //console.log(this.monedas.itemsObs.subscribe(data => console.log(data)));
     }
     // #docregion snapshot
     MonedaComponent.prototype.ngOnInit = function () {

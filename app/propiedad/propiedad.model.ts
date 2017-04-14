@@ -11,35 +11,39 @@ export class Propiedad extends FireFactoryService {
     public banos: String;
     public descripcion: String;
     public moneda: Array<any>;
-    public general: FormArray;
+    // public general: FormArray;
+    // public otro: FormArray;
 
 
-    public _items: Array<any>;
+
 
 
     constructor() {
         super();
+
     }
 
     buildForm(): FormGroup {
-        // this.general = generales;
 
-        // console.log(form);
-        // let allCategories: FormArray = new FormArray([]);
-        // for (let i = 0; i < generales.length; i++) {
-        //     let fg = new FormGroup({});
-        //     fg.addControl(generales[i].nombre, new FormControl(false));
-        //     allCategories.push(fg)
-        // }
-        //
-        // console.log(allCategories);
+        // Declore valores default para el reseteo del form
+        this.formDefaults = {
+            'banos': '',
+            'descripcion': '',
+            'moneda': 0, // TODO: Para cuando es un indice, hacer una validación custom que se fije que el valor no sea 0 el seleccionado
+            'general': 0,
+            'otro': false
+        };
 
 
+        // Comienzo a armar el formulario
         this.fb = new FormBuilder();
-        // this.form = form;
 
-        let arr = this.fb.array([]);
+        // Declaro un array por cada tabla hija que quiera agregar
+        var arr = this.fb.array([]);
+        var arrOtro = this.fb.array([]);
 
+
+        // Declaro el formulario
         this.form = this.fb.group({
             '$key': this.$key,
             '$exists': this.$exists,
@@ -51,21 +55,23 @@ export class Propiedad extends FireFactoryService {
             ]
             ],
             'moneda': [this.moneda, [Validators.required]],
-            'general': arr
-            // 'general': this.fb.array([
-            //     this.fb.group({value:[false]}),
-            //     this.fb.group({value:[false]}),
-            //     this.fb.group({value:[true]})
-            // ])
+            'general': arr,
+            'otro': arrOtro
         });
-        this.generateArray(arr, this.fb, 'general');
+
+        // Genero todos los datos para las tablas hijas
+        // por cada tabla hija se debe llamar a generate Array
+        this.generateArray(arr, this.fb, 'general', false);
+        this.generateArray(arrOtro, this.fb, 'otro', true);
 
 
+        // Espero la actualización de los datos para poder mostrar en la vista
         let observable: Observable<any> = this.notification$;
         observable.subscribe(data=> {
-            this._items = data.data;
+            this._items[data.nombre] = data.data;
         });
 
+        // Me subscribo al servicio de value chanes con mis datos
         this.form.valueChanges
             .subscribe(data => this.onValueChanged(data, this.form, this.formErrors, this.validationMessages));
 
@@ -75,13 +81,12 @@ export class Propiedad extends FireFactoryService {
     }
 
 
-
-
     formErrors = {
         'banos': '',
         'descripcion': '',
         'moneda': '',
-        'general': ''
+        'general': '',
+        'otro': '',
     };
     validationMessages = {
         'banos': {},
@@ -93,6 +98,7 @@ export class Propiedad extends FireFactoryService {
         'moneda': {
             'required': 'Power is required.'
         },
-        'general': {}
+        'general': {},
+        'otro': {},
     };
 }

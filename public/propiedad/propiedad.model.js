@@ -14,6 +14,8 @@ var fire_provider_1 = require("../providers/fire.provider");
 var forms_1 = require("@angular/forms");
 var Propiedad = (function (_super) {
     __extends(Propiedad, _super);
+    // public general: FormArray;
+    // public otro: FormArray;
     function Propiedad() {
         var _this = _super.call(this) || this;
         _this.form = new forms_1.FormGroup({});
@@ -22,7 +24,8 @@ var Propiedad = (function (_super) {
             'banos': '',
             'descripcion': '',
             'moneda': '',
-            'general': ''
+            'general': '',
+            'otro': '',
         };
         _this.validationMessages = {
             'banos': {},
@@ -34,25 +37,27 @@ var Propiedad = (function (_super) {
             'moneda': {
                 'required': 'Power is required.'
             },
-            'general': {}
+            'general': {},
+            'otro': {},
         };
         return _this;
     }
     Propiedad.prototype.buildForm = function () {
-        // this.general = generales;
         var _this = this;
-        // console.log(form);
-        // let allCategories: FormArray = new FormArray([]);
-        // for (let i = 0; i < generales.length; i++) {
-        //     let fg = new FormGroup({});
-        //     fg.addControl(generales[i].nombre, new FormControl(false));
-        //     allCategories.push(fg)
-        // }
-        //
-        // console.log(allCategories);
+        // Declore valores default para el reseteo del form
+        this.formDefaults = {
+            'banos': '',
+            'descripcion': '',
+            'moneda': 0,
+            'general': 0,
+            'otro': false
+        };
+        // Comienzo a armar el formulario
         this.fb = new forms_1.FormBuilder();
-        // this.form = form;
+        // Declaro un array por cada tabla hija que quiera agregar
         var arr = this.fb.array([]);
+        var arrOtro = this.fb.array([]);
+        // Declaro el formulario
         this.form = this.fb.group({
             '$key': this.$key,
             '$exists': this.$exists,
@@ -64,18 +69,19 @@ var Propiedad = (function (_super) {
                 ]
             ],
             'moneda': [this.moneda, [forms_1.Validators.required]],
-            'general': arr
-            // 'general': this.fb.array([
-            //     this.fb.group({value:[false]}),
-            //     this.fb.group({value:[false]}),
-            //     this.fb.group({value:[true]})
-            // ])
+            'general': arr,
+            'otro': arrOtro
         });
-        this.generateArray(arr, this.fb, 'general');
+        // Genero todos los datos para las tablas hijas
+        // por cada tabla hija se debe llamar a generate Array
+        this.generateArray(arr, this.fb, 'general', false);
+        this.generateArray(arrOtro, this.fb, 'otro', true);
+        // Espero la actualización de los datos para poder mostrar en la vista
         var observable = this.notification$;
         observable.subscribe(function (data) {
-            _this._items = data.data;
+            _this._items[data.nombre] = data.data;
         });
+        // Me subscribo al servicio de value chanes con mis datos
         this.form.valueChanges
             .subscribe(function (data) { return _this.onValueChanged(data, _this.form, _this.formErrors, _this.validationMessages); });
         this.onValueChanged(); // (re)set validation messages now);

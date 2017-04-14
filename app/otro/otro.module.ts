@@ -5,10 +5,9 @@ import {NgModule}       from '@angular/core';
 import {CommonModule}   from '@angular/common';
 import {ReactiveFormsModule}    from '@angular/forms';
 
-import {MonedaComponent}    from './moneda.component';
-import {MonedaLisComponent}    from './moneda-list.component';
-import {Moneda}    from './moneda.model';
-// import { MonedaRoutingModule }    from './moneda-routes.module';
+// import {GeneralComponent}    from './general.component';
+// import {GeneralLisComponent}    from './general-list.component';
+// import { GeneralRoutingModule }    from './general-routes.module';
 
 // import { HeroListComponent }    from './hero-list.component';
 // import { HeroDetailComponent }  from './hero-detail.component';
@@ -22,21 +21,23 @@ import {Moneda}    from './moneda.model';
 @NgModule({
     imports: [
         CommonModule,
-        ReactiveFormsModule
-        // MonedaRoutingModule
+        ReactiveFormsModule,
+        // GeneralRoutingModule
 // #enddocregion v1
 //         HeroRoutingModule
 // #docregion v1
     ],
     declarations: [
-        MonedaComponent,
-        MonedaLisComponent
+        // GeneralComponent,
+        // GeneralLisComponent,
         // HeroDetailComponent
     ],
-    exports: [MonedaComponent, MonedaLisComponent],
+    exports: [
+        // GeneralComponent, GeneralLisComponent
+    ],
     providers: [
         // HeroService
     ]
 })
-export class MonedasModule {
+export class OtrosModule {
 }

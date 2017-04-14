@@ -25,7 +25,7 @@ export class GeneralComponent implements OnInit  {
         this.generales = new General();
         this.monedas = new Moneda();
         this.monedas.join(['general']);
-        console.log(this.generales.itemsObs.subscribe(data => console.log(data)));
+        //console.log(this.generales.itemsObs.subscribe(data => console.log(data)));
     }
 
     // #docregion snapshot

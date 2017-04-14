@@ -5,15 +5,15 @@ import {RouterModule} from '@angular/router';
 
 import {AngularFireModule, AuthProviders, AuthMethods} from 'angularfire2';
 
-
-
 import {Routing} from './app.routes';
 import {AppComponent}    from './app.component';
 import {CoreModule}    from './core/core.module';
 import {MonedasModule}    from './moneda/moneda.module';
 import {PropiedadesModule}    from './propiedad/propiedad.module';
 import {GeneralesModule}    from './general/general.module';
-import {testPipe}        from './shared/test.pipe';
+import {OtrosModule}    from './otro/otro.module';
+import {SharedModule}    from './shared/shared.module';
+import {PaginationService} from "./core/pagination.service";
 
 
 @NgModule({
@@ -22,10 +22,12 @@ import {testPipe}        from './shared/test.pipe';
         RouterModule,
         ReactiveFormsModule,
         Routing,
-        CoreModule,
         MonedasModule,
         PropiedadesModule,
         GeneralesModule,
+        OtrosModule,
+        SharedModule,
+        CoreModule,
         AngularFireModule.initializeApp({
                 apiKey: "AIzaSyAbx0mKlgtt4k7qRxTgcmvbJyHD6GjOFDU",
                 authDomain: "inmobiliarias.firebaseapp.com",
@@ -37,8 +39,9 @@ import {testPipe}        from './shared/test.pipe';
                 method: AuthMethods.Redirect
             }),
     ],
-    declarations: [AppComponent, testPipe],
-    bootstrap: [AppComponent]
+    declarations: [AppComponent],
+    bootstrap: [AppComponent],
+    providers: [PaginationService]
 
 })
 export class AppModule {

@@ -7,6 +7,8 @@ import {ReactiveFormsModule}    from '@angular/forms';
 
 import {PropiedadComponent}    from './propiedad.component';
 import {PropiedadLisComponent}    from './propiedad-list.component';
+import {SharedModule}    from '../shared/shared.module';
+import {CoreModule}    from '../core/core.module';
 // import { PropiedadRoutingModule }    from './propiedad-routes.module';
 
 // import { HeroListComponent }    from './hero-list.component';
@@ -22,6 +24,8 @@ import {PropiedadLisComponent}    from './propiedad-list.component';
     imports: [
         CommonModule,
         ReactiveFormsModule,
+        SharedModule,
+        CoreModule
         // PropiedadRoutingModule
 // #enddocregion v1
 //         HeroRoutingModule

@@ -13,14 +13,9 @@ var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
 var nav_component_1 = require("./nav.component");
-// import { MonedaRoutingModule }    from './moneda-routes.module';
-// import { HeroListComponent }    from './hero-list.component';
-// import { HeroDetailComponent }  from './hero-detail.component';
-//
-// import { HeroService } from './hero.service';
-// #enddocregion v1
-// import { HeroRoutingModule } from './heroes-routing.module';
-// #docregion v1
+var pagination_component_1 = require("./pagination.component");
+var pagination_pipe_1 = require("./pagination.pipe");
+var pagination_service_1 = require("./pagination.service");
 var CoreModule = (function () {
     function CoreModule() {
     }
@@ -30,13 +25,21 @@ CoreModule = __decorate([
     core_1.NgModule({
         imports: [
             common_1.CommonModule,
-            forms_1.ReactiveFormsModule,
+            forms_1.ReactiveFormsModule
         ],
         declarations: [
             nav_component_1.NavComponent,
+            pagination_component_1.PaginationComponent,
+            pagination_pipe_1.PaginationPipe
         ],
-        exports: [nav_component_1.NavComponent],
-        providers: []
+        exports: [
+            nav_component_1.NavComponent,
+            pagination_component_1.PaginationComponent,
+            pagination_pipe_1.PaginationPipe
+        ],
+        providers: [
+            pagination_service_1.PaginationService
+        ]
     })
 ], CoreModule);
 exports.CoreModule = CoreModule;

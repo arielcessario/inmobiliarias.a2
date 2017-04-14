@@ -21,7 +21,7 @@ export class MonedaComponent implements OnInit  {
         // private service: HeroService
     ) {
         this.monedas = new Moneda();
-        console.log(this.monedas.itemsObs.subscribe(data => console.log(data)));
+        //console.log(this.monedas.itemsObs.subscribe(data => console.log(data)));
     }
 
     // #docregion snapshot

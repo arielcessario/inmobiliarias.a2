@@ -17,7 +17,9 @@ var core_module_1 = require("./core/core.module");
 var moneda_module_1 = require("./moneda/moneda.module");
 var propiedad_module_1 = require("./propiedad/propiedad.module");
 var general_module_1 = require("./general/general.module");
-var test_pipe_1 = require("./shared/test.pipe");
+var otro_module_1 = require("./otro/otro.module");
+var shared_module_1 = require("./shared/shared.module");
+var pagination_service_1 = require("./core/pagination.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,10 +32,12 @@ AppModule = __decorate([
             router_1.RouterModule,
             forms_1.ReactiveFormsModule,
             app_routes_1.Routing,
-            core_module_1.CoreModule,
             moneda_module_1.MonedasModule,
             propiedad_module_1.PropiedadesModule,
             general_module_1.GeneralesModule,
+            otro_module_1.OtrosModule,
+            shared_module_1.SharedModule,
+            core_module_1.CoreModule,
             angularfire2_1.AngularFireModule.initializeApp({
                 apiKey: "AIzaSyAbx0mKlgtt4k7qRxTgcmvbJyHD6GjOFDU",
                 authDomain: "inmobiliarias.firebaseapp.com",
@@ -44,8 +48,9 @@ AppModule = __decorate([
                 method: angularfire2_1.AuthMethods.Redirect
             }),
         ],
-        declarations: [app_component_1.AppComponent, test_pipe_1.testPipe],
-        bootstrap: [app_component_1.AppComponent]
+        declarations: [app_component_1.AppComponent],
+        bootstrap: [app_component_1.AppComponent],
+        providers: [pagination_service_1.PaginationService]
     })
 ], AppModule);
 exports.AppModule = AppModule;
