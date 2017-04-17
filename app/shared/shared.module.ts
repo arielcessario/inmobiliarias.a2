@@ -4,6 +4,7 @@
 import {NgModule}       from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {filtro} from './filtro.pipe'
+import {TitleCasePipe} from './title-case.pipe'
 // import {PaginationPipe}    from '../core/pagination.pipe';
 
 // import {GeneralComponent}    from './general.component';
@@ -32,9 +33,11 @@ import {filtro} from './filtro.pipe'
         // GeneralLisComponent,
         // HeroDetailComponent,
         filtro,
+        TitleCasePipe,
     ],
     exports: [
         filtro,
+        TitleCasePipe,
         // GeneralComponent, GeneralLisComponent
     ],
     providers: [

@@ -1,6 +1,3 @@
-// #docplaster
-// #docregion
-// #docregion v1
 import {NgModule}       from '@angular/core';
 import {CommonModule}   from '@angular/common';
 import {ReactiveFormsModule}    from '@angular/forms';
@@ -9,37 +6,20 @@ import {PropiedadComponent}    from './propiedad.component';
 import {PropiedadLisComponent}    from './propiedad-list.component';
 import {SharedModule}    from '../shared/shared.module';
 import {CoreModule}    from '../core/core.module';
-// import { PropiedadRoutingModule }    from './propiedad-routes.module';
 
-// import { HeroListComponent }    from './hero-list.component';
-// import { HeroDetailComponent }  from './hero-detail.component';
-//
-// import { HeroService } from './hero.service';
-
-// #enddocregion v1
-// import { HeroRoutingModule } from './heroes-routing.module';
-
-// #docregion v1
 @NgModule({
     imports: [
         CommonModule,
         ReactiveFormsModule,
         SharedModule,
-        CoreModule
-        // PropiedadRoutingModule
-// #enddocregion v1
-//         HeroRoutingModule
-// #docregion v1
+        CoreModule,
     ],
     declarations: [
         PropiedadComponent,
         PropiedadLisComponent,
-        // HeroDetailComponent
     ],
     exports: [PropiedadComponent, PropiedadLisComponent],
-    providers: [
-        // HeroService
-    ]
+    providers: []
 })
 export class PropiedadesModule {
 }

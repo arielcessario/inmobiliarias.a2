@@ -10,6 +10,7 @@ export class Propiedad extends FireFactoryService {
     public $exists: String;
     public banos: String;
     public descripcion: String;
+    public titulo: String;
     public moneda: Array<any>;
     // public general: FormArray;
     // public otro: FormArray;
@@ -29,6 +30,7 @@ export class Propiedad extends FireFactoryService {
         this.formDefaults = {
             'banos': '',
             'descripcion': '',
+            'titulo': '',
             'moneda': 0, // TODO: Para cuando es un indice, hacer una validación custom que se fije que el valor no sea 0 el seleccionado
             'general': 0,
             'otro': false
@@ -49,6 +51,12 @@ export class Propiedad extends FireFactoryService {
             '$exists': this.$exists,
             'banos': this.banos,
             'descripcion': [this.descripcion, [
+                Validators.required,
+                Validators.minLength(4),
+                Validators.maxLength(24),
+            ]
+            ],
+            'titulo': [this.titulo, [
                 Validators.required,
                 Validators.minLength(4),
                 Validators.maxLength(24),
@@ -84,6 +92,7 @@ export class Propiedad extends FireFactoryService {
     formErrors = {
         'banos': '',
         'descripcion': '',
+        'titulo': '',
         'moneda': '',
         'general': '',
         'otro': '',
@@ -91,6 +100,11 @@ export class Propiedad extends FireFactoryService {
     validationMessages = {
         'banos': {},
         'descripcion': {
+            'required': 'Name is required.',
+            'minlength': 'Name must be at least 4 characters long.',
+            'maxlength': 'Name cannot be more than 24 characters long.'
+        },
+        'titulo': {
             'required': 'Name is required.',
             'minlength': 'Name must be at least 4 characters long.',
             'maxlength': 'Name cannot be more than 24 characters long.'

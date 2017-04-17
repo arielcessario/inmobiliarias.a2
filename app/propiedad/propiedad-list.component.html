@@ -1,7 +1,59 @@
-Listado
+<!--<md-list>-->
+<!--<h3 md-subheader>Listado</h3>-->
+<!--<md-list-item-->
+<!--*ngFor="let item of propiedades.get() | async | paginado:2:start">-->
+<!--<md-icon md-list-icon (click)="propiedades.selectItem(item.$key, propiedades.form);">place</md-icon>-->
+<!--<h4 md-line (click)="propiedades.selectItem(item.$key, propiedades.form);">{{item.descripcion}}</h4>-->
+<!--<button md-button (click)="propiedades.remove(item, propiedades.form)">-->
+<!--<md-icon>delete</md-icon>-->
+<!--</button>-->
+<!--</md-list-item>-->
+<!--</md-list>-->
 
-<div *ngFor="let item of propiedades.get() | async | paginado:2:start">
-    <span (click)="propiedades.selectItem(item.$key, propiedades.form);">{{item.descripcion}}</span>
-    <button (click)="propiedades.remove(item, propiedades.form)">Eliminar</button>
+<div>
+    <!--<md-card-header>-->
+    <div color="primary">Listado</div>
+    <!--</md-card-header>-->
+    <!--<md-card-content>-->
+    <div>
+        <div *ngFor="let item of propiedades.get() | async | paginado:2:start"
+             (click)="propiedades.selectItem(item.$key, propiedades.form);">
+            <h2>{{item.titulo}}</h2>
+            <button (click)="propiedades.remove(item, propiedades.form)">
+                Eliminar
+            </button>
+        </div>
+    </div>
+    <!--</md-card-content>-->
+    <!--<md-card-actions>-->
+    <pagination-component (paginado)="countChange($event)"></pagination-component>
+    <!--</md-card-actions>-->
 </div>
-<pagination-component (paginado)="countChange($event)"></pagination-component>
+
+
+<!--<md-card class="card-list" *ngFor="let item of propiedades.get() | async | paginado:2:start">-->
+<!--<md-card-header (click)="propiedades.selectItem(item.$key, propiedades.form);">-->
+<!--&lt;!&ndash;<div md-card-avatar class="example-header-image"></div>&ndash;&gt;-->
+<!--<md-icon>place</md-icon>-->
+<!--<md-card-title>{{item.titulo}}</md-card-title>-->
+<!--&lt;!&ndash;<md-card-subtitle>Dog Breed</md-card-subtitle>&ndash;&gt;-->
+<!--</md-card-header>-->
+<!--&lt;!&ndash;<img md-card-image src="images/jajaja.png" (click)="propiedades.selectItem(item.$key, propiedades.form);">&ndash;&gt;-->
+<!--<md-card-content (click)="propiedades.selectItem(item.$key, propiedades.form);">-->
+<!--<p>-->
+<!--{{item.descripcion}}-->
+<!--</p>-->
+<!--</md-card-content>-->
+<!--<md-card-actions>-->
+<!--<button md-button (click)="propiedades.remove(item, propiedades.form)">-->
+<!--Eliminar-->
+<!--</button>-->
+<!--</md-card-actions>-->
+<!--</md-card>-->
+
+
+<!--<div *ngFor="let item of propiedades.get() | async | paginado:2:start">-->
+<!--<span (click)="propiedades.selectItem(item.$key, propiedades.form);">{{item.descripcion}}</span>-->
+<!--<button (click)="propiedades.remove(item, propiedades.form)">Eliminar</button>-->
+<!--</div>-->
+

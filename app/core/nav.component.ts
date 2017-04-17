@@ -1,7 +1,7 @@
 // Snapshot version
 // #docregion
-import { Component, OnInit }      from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit}      from '@angular/core';
+import {Router} from '@angular/router';
 // import { Hero, HeroService } from './hero.service';
 
 
@@ -9,14 +9,20 @@ import { Router } from '@angular/router';
     selector: 'nav-component',
     templateUrl: 'app/core/nav.component.html'
 })
-export class NavComponent implements OnInit  {
+export class NavComponent implements OnInit {
     // hero: Hero;
 
     routes: string[];
+    titulo: string = '';
 
 
     constructor(private router: Router) {
-        this.routes = ['monedas', 'propiedades', 'comodidades', 'servicios', 'principal']
+        this.routes = ['monedas', 'propiedades', 'comodidades', 'servicios', 'principal'];
+
+        this.router.events.subscribe(data=>{
+            // this.titulo = data.url.replace('/','');
+        })
+
     }
 
     isSelected(path) {
@@ -33,6 +39,7 @@ export class NavComponent implements OnInit  {
         // let link = ['/detail', hero.id];
         this.router.navigate([link]);
     }
+
     ngOnInit() {
         // (+) converts string 'id' to a number
         // let id = +this.route.snapshot.params['id'];

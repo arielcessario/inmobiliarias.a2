@@ -10,6 +10,7 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var platform_browser_1 = require("@angular/platform-browser");
 var router_1 = require("@angular/router");
+var animations_1 = require("@angular/platform-browser/animations");
 var angularfire2_1 = require("angularfire2");
 var app_routes_1 = require("./app.routes");
 var app_component_1 = require("./app.component");
@@ -30,6 +31,7 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             router_1.RouterModule,
+            animations_1.BrowserAnimationsModule,
             forms_1.ReactiveFormsModule,
             app_routes_1.Routing,
             moneda_module_1.MonedasModule,

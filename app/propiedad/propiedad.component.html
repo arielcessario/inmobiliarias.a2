@@ -1,6 +1,7 @@
 <div class="container">
-    <h1>Propiedades</h1>
     <form [formGroup]="formPropiedades" novalidate (ngSubmit)="propiedades.onSubmit(formPropiedades)">
+
+
         <div class="form-group">
             <label for="">Baños</label>
             <input type="text" class="form-control" formControlName="banos">
@@ -18,8 +19,15 @@
         </div>
 
         <div class="form-group">
+            <label for="">Título</label>
+            <input type="text" class="form-control" formControlName="titulo">
+            <small class="text-danger">
+                {{propiedades.formErrors['titulo']}}
+            </small>
+        </div>
+
+        <div class="form-group">
             <label for="">Moneda</label>
-            <!--<input type="text" class="form-control" formControlName="moneda">-->
             <select formControlName="moneda">
                 <option *ngFor="let i of monedas.get() | async" [value]="i.$key">{{i.nombre}}</option>
             </select>
@@ -27,19 +35,9 @@
                 {{propiedades.formErrors['moneda']}}
             </small>
         </div>
-        <!--<div class="form-group">-->
-        <!--<label for="">General</label>-->
-        <!--&lt;!&ndash;<input type="text" class="form-control" formControlName="general">&ndash;&gt;-->
-        <!--<select formControlName="general">-->
-        <!--<option *ngFor="let i of generales.get()['general'] | async">{{i.nombre}}</option>-->
-        <!--</select>-->
-        <!--<small class="text-danger">-->
-        <!--{{propiedades.formErrors['general']}}-->
-        <!--</small>-->
-        <!--</div>-->
 
 
-        <div formArrayName="general">
+        <div formArrayName="general" class="form-group">
             <div *ngFor="let _item of formPropiedades.controls.general.controls; let i = index;">
                 <div [formGroupName]="i">
                     <input type="number" formControlName="value">
@@ -49,7 +47,8 @@
             </div>
         </div>
 
-        <div formArrayName="otro">
+
+        <div formArrayName="otro" class="form-group">
             <div *ngFor="let _item of formPropiedades.controls.otro.controls; let i = index;">
                 <div [formGroupName]="i">
                     <input type="checkbox" formControlName="value">
@@ -58,24 +57,20 @@
                 </div>
             </div>
         </div>
-        <!--<div formArrayName="general">-->
-        <!--<div *ngFor="let _item of formPropiedades.controls.general.controls; let i = index;">-->
-        <!--<div [formGroupName]="i">-->
-        <!--<input type="checkbox" formControlName="value">-->
-        <!--<span>{{propiedades.items[i].nombre}}</span>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
 
 
-        <button type="button" class="btn btn-default" (click)="propiedades.resetForm(formPropiedades)">Refresh</button>
-        <button type="submit" class="btn btn-default">Submit</button>
-        <div *ngIf="!formPropiedades.valid && formPropiedades.touched" class="text-danger">
-            'Complete todos los datos obligatorios'
+        <div class="button-bar">
+            <button type="button" class="btn btn-default" (click)="propiedades.resetForm(formPropiedades)">Refresh
+            </button>
+            <button type="submit" class="btn btn-default">Submit</button>
         </div>
-        <div *ngFor="let event of events" class="margin-20">
-            <pre> {{ event | json }} </pre>
+
+        <div class="notifications">
+            <div *ngIf="!formPropiedades.valid && formPropiedades.touched" class="text-danger">
+                'Complete todos los datos obligatorios'
+            </div>
         </div>
     </form>
+
     <propiedad-list-component [propiedades]="propiedades"></propiedad-list-component>
 </div>

@@ -23,6 +23,7 @@ var Propiedad = (function (_super) {
         _this.formErrors = {
             'banos': '',
             'descripcion': '',
+            'titulo': '',
             'moneda': '',
             'general': '',
             'otro': '',
@@ -30,6 +31,11 @@ var Propiedad = (function (_super) {
         _this.validationMessages = {
             'banos': {},
             'descripcion': {
+                'required': 'Name is required.',
+                'minlength': 'Name must be at least 4 characters long.',
+                'maxlength': 'Name cannot be more than 24 characters long.'
+            },
+            'titulo': {
                 'required': 'Name is required.',
                 'minlength': 'Name must be at least 4 characters long.',
                 'maxlength': 'Name cannot be more than 24 characters long.'
@@ -48,6 +54,7 @@ var Propiedad = (function (_super) {
         this.formDefaults = {
             'banos': '',
             'descripcion': '',
+            'titulo': '',
             'moneda': 0,
             'general': 0,
             'otro': false
@@ -63,6 +70,12 @@ var Propiedad = (function (_super) {
             '$exists': this.$exists,
             'banos': this.banos,
             'descripcion': [this.descripcion, [
+                    forms_1.Validators.required,
+                    forms_1.Validators.minLength(4),
+                    forms_1.Validators.maxLength(24),
+                ]
+            ],
+            'titulo': [this.titulo, [
                     forms_1.Validators.required,
                     forms_1.Validators.minLength(4),
                     forms_1.Validators.maxLength(24),

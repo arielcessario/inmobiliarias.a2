@@ -9,10 +9,12 @@ import {NavComponent}    from './nav.component';
 import {PaginationComponent}    from './pagination.component';
 import {PaginationPipe}    from './pagination.pipe';
 import {PaginationService}    from './pagination.service';
+import {SharedModule} from "../shared/shared.module";
 @NgModule({
     imports: [
         CommonModule,
-        ReactiveFormsModule
+        SharedModule,
+        ReactiveFormsModule,
     ],
     declarations: [
         NavComponent,

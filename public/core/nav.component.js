@@ -17,7 +17,11 @@ var router_1 = require("@angular/router");
 var NavComponent = (function () {
     function NavComponent(router) {
         this.router = router;
+        this.titulo = '';
         this.routes = ['monedas', 'propiedades', 'comodidades', 'servicios', 'principal'];
+        this.router.events.subscribe(function (data) {
+            // this.titulo = data.url.replace('/','');
+        });
     }
     NavComponent.prototype.isSelected = function (path) {
         // if(path === this.location.path()){

@@ -2,6 +2,7 @@ import {NgModule}            from '@angular/core';
 import {ReactiveFormsModule}        from '@angular/forms';
 import {BrowserModule}    from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AngularFireModule, AuthProviders, AuthMethods} from 'angularfire2';
 
@@ -20,6 +21,7 @@ import {PaginationService} from "./core/pagination.service";
     imports: [
         BrowserModule,
         RouterModule,
+        BrowserAnimationsModule,
         ReactiveFormsModule,
         Routing,
         MonedasModule,

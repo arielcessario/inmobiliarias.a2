@@ -16,6 +16,7 @@ var nav_component_1 = require("./nav.component");
 var pagination_component_1 = require("./pagination.component");
 var pagination_pipe_1 = require("./pagination.pipe");
 var pagination_service_1 = require("./pagination.service");
+var shared_module_1 = require("../shared/shared.module");
 var CoreModule = (function () {
     function CoreModule() {
     }
@@ -25,7 +26,8 @@ CoreModule = __decorate([
     core_1.NgModule({
         imports: [
             common_1.CommonModule,
-            forms_1.ReactiveFormsModule
+            shared_module_1.SharedModule,
+            forms_1.ReactiveFormsModule,
         ],
         declarations: [
             nav_component_1.NavComponent,
