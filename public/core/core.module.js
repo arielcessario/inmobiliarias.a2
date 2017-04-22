@@ -12,11 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
+var shared_module_1 = require("../shared/shared.module");
 var nav_component_1 = require("./nav.component");
 var pagination_component_1 = require("./pagination.component");
 var pagination_pipe_1 = require("./pagination.pipe");
 var pagination_service_1 = require("./pagination.service");
-var shared_module_1 = require("../shared/shared.module");
+var autocomplete_component_1 = require("./autocomplete.component");
+var autocomplete_service_1 = require("./autocomplete.service");
 var CoreModule = (function () {
     function CoreModule() {
     }
@@ -32,15 +34,18 @@ CoreModule = __decorate([
         declarations: [
             nav_component_1.NavComponent,
             pagination_component_1.PaginationComponent,
-            pagination_pipe_1.PaginationPipe
+            pagination_pipe_1.PaginationPipe,
+            autocomplete_component_1.AutocompleteComponent
         ],
         exports: [
             nav_component_1.NavComponent,
             pagination_component_1.PaginationComponent,
-            pagination_pipe_1.PaginationPipe
+            pagination_pipe_1.PaginationPipe,
+            autocomplete_component_1.AutocompleteComponent
         ],
         providers: [
-            pagination_service_1.PaginationService
+            pagination_service_1.PaginationService,
+            autocomplete_service_1.AutocompleteService,
         ]
     })
 ], CoreModule);

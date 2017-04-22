@@ -16,11 +16,12 @@ var router_1 = require("@angular/router");
 // import { Hero, HeroService } from './hero.service';
 var NavComponent = (function () {
     function NavComponent(router) {
+        var _this = this;
         this.router = router;
         this.titulo = '';
         this.routes = ['monedas', 'propiedades', 'comodidades', 'servicios', 'principal'];
         this.router.events.subscribe(function (data) {
-            // this.titulo = data.url.replace('/','');
+            _this.titulo = data['url'].replace('/', '');
         });
     }
     NavComponent.prototype.isSelected = function (path) {

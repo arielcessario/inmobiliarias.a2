@@ -1,6 +1,14 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
-.form-group{
+.form-group,
+.form-group div:nth-child(1){
   margin: 5px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-group-horizontal{
+  flex-direction: row;
 }

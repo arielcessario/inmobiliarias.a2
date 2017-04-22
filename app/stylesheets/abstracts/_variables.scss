@@ -3,9 +3,6 @@
 // -----------------------------------------------------------------------------
 
 
-
-
-
 /// Regular font family
 /// @type List
 $text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
@@ -13,9 +10,6 @@ $text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvet
 /// Code (monospace) font family
 /// @type List
 $code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
-
-
-
 
 
 /// Copy text color
@@ -39,15 +33,9 @@ $mid-grey: rgb(153, 153, 153) !default;
 $dark-grey: rgb(68, 68, 68) !default;
 
 
-
-
-
 /// Container's maximum width
 /// @type Length
 $max-width: 1180px !default;
-
-
-
 
 
 /// Breakpoints map
@@ -60,7 +48,17 @@ $breakpoints: (
 ) !default;
 
 
+/// Tiempos de transición para animaciones
+$fast-transition-time: 0.3s;
+$medium-transition-time: 1s;
+$long-transition-time: 3s;
 
+
+/// Tamaños de controles
+$control-small: 50px;
+$control-medium: 150px;
+$control-big: 350px;
+$control-full: 100%;
 
 
 

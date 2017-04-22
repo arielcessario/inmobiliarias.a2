@@ -20,7 +20,7 @@ export class NavComponent implements OnInit {
         this.routes = ['monedas', 'propiedades', 'comodidades', 'servicios', 'principal'];
 
         this.router.events.subscribe(data=>{
-            // this.titulo = data.url.replace('/','');
+            this.titulo = data['url'].replace('/','');
         })
 
     }

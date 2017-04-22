@@ -1,10 +1,14 @@
 <div class="container">
     <form [formGroup]="formPropiedades" novalidate (ngSubmit)="propiedades.onSubmit(formPropiedades)">
 
-
+        <h3>Información de la propiedad</h3>
         <div class="form-group">
             <label for="">Baños</label>
-            <input type="text" class="form-control" formControlName="banos">
+            <input type="text" class="form-control" formControlName="banos"
+                   ac-autocomplete
+                   [autocompleteData]="monedas"
+                   [autocompleteSearchBy]="'nombre'"
+                   [autocompleteToShow]="['nombre']">
             <small class="text-danger">
                 {{propiedades.formErrors['banos']}}
             </small>
@@ -37,23 +41,24 @@
         </div>
 
 
-        <div formArrayName="general" class="form-group">
+        <h3>Comodidades generales</h3>
+        <div formArrayName="general" class="form-group form-group-horizontal">
             <div *ngFor="let _item of formPropiedades.controls.general.controls; let i = index;">
                 <div [formGroupName]="i">
+                    <span>{{propiedades._items['general'][i].nombre}}</span>
                     <input type="number" formControlName="value">
                     <!--<input type="text" formControlName="$key">-->
-                    <span>{{propiedades._items['general'][i].nombre}}</span>
                 </div>
             </div>
         </div>
 
 
-        <div formArrayName="otro" class="form-group">
+        <div formArrayName="otro" class="form-group form-group-horizontal">
             <div *ngFor="let _item of formPropiedades.controls.otro.controls; let i = index;">
                 <div [formGroupName]="i">
                     <input type="checkbox" formControlName="value">
-                    <!--<input type="text" formControlName="$bidireccional">-->
                     <span>{{propiedades._items['otro'][i].nombre}}</span>
+                    <!--<input type="text" formControlName="$bidireccional">-->
                 </div>
             </div>
         </div>

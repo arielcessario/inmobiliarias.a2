@@ -14,9 +14,10 @@ pagination-component {
       margin: 5px;
       background-color: cadetblue;
       color: white;
+      @include transition($fast-transition-time, ease-out);
       @include border-radius-separate(2px, 2px, 2px, 2px);
       &:hover{
-        @include shadow(2);
+        @include shadow(2, black);
       }
     }
 

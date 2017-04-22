@@ -1,0 +1,23 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+.ac-autocomplete {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  z-index: 1000;
+  .ac-autocomplete-container{
+    background-color: white;
+    @include shadow(3, black);
+    div{
+      margin: 0 !important;
+    }
+    span{
+      margin: 5px !important;
+    }
+  }
+
+  .ac-autocomplete-seleccionado{
+    background-color: silver;
+  }
+}
