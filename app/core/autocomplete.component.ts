@@ -103,7 +103,7 @@ export class AutocompleteComponent implements OnInit, OnChanges, AfterContentIni
         this.determineVisibility();
     }
 
-    @HostListener('window:keydown', ['$event'])
+    @HostListener('keydown', ['$event'])
     keyboardInput(event: KeyboardEvent) {
         // Me muevo para abajo en la lista
         if (event.keyCode == 40) {
@@ -134,6 +134,7 @@ export class AutocompleteComponent implements OnInit, OnChanges, AfterContentIni
             this.focused = false;
             this.alreadySelected = true;
             this.selected = this.response[this.indexSelected - 1];
+
             this.control.control.setValue(this.selected[this.autocompleteToSelect]);
             this.selectedId.emit(this.selected['$key']);
         }
