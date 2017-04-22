@@ -33,4 +33,8 @@ export class PropiedadComponent implements OnInit {
         this.formPropiedades = this.propiedades.buildForm();
 
     }
+
+    getId(event){
+        console.log(event);
+    }
 }

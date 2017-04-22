@@ -6,9 +6,11 @@
             <label for="">Baños</label>
             <input type="text" class="form-control" formControlName="banos"
                    ac-autocomplete
-                   [autocompleteData]="monedas"
-                   [autocompleteSearchBy]="'nombre'"
-                   [autocompleteToShow]="['nombre']">
+                   [autocompleteData]="propiedades"
+                   [autocompleteSearchBy]="'titulo'"
+                   [autocompleteToSelect]="'titulo'"
+                   [autocompleteToShow]="['titulo']"
+                    (selectedId)="getId($event)">
             <small class="text-danger">
                 {{propiedades.formErrors['banos']}}
             </small>
@@ -16,7 +18,12 @@
 
         <div class="form-group">
             <label for="">Descripción</label>
-            <input type="text" class="form-control" formControlName="descripcion">
+            <input type="text" class="form-control" formControlName="descripcion"
+                   ac-autocomplete
+                   [autocompleteData]="monedas"
+                   [autocompleteSearchBy]="'nombre'"
+                   [autocompleteToSelect]="'nombre'"
+                   [autocompleteToShow]="['nombre']">
             <small class="text-danger">
                 {{propiedades.formErrors['descripcion']}}
             </small>

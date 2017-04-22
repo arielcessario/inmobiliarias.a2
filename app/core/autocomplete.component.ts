@@ -6,17 +6,24 @@ import {
     EventEmitter,
     OnChanges,
     SimpleChanges,
-    HostListener, ElementRef, AfterContentInit, ViewContainerRef, ViewChild, AfterViewInit, Renderer
+    HostListener, ElementRef, AfterContentInit, ViewChild, AfterViewInit
 }      from '@angular/core';
 import {FireFactoryService} from "../providers/fire.provider";
+import {NgControl} from "@angular/forms";
 
 @Component({
     selector: '[ac-autocomplete]',
     templateUrl: 'app/core/autocomplete.component.html'
 })
+
+/**
+ * TODO:
+ * 1 - Selected Id se puede obtener en forma automática?
+ */
 export class AutocompleteComponent implements OnInit, OnChanges, AfterContentInit, AfterViewInit {
     @Input() autocompleteData: FireFactoryService;
     @Input() autocompleteToShow: Array<any>;
+    @Input() autocompleteToSelect: string;
     @Input() autocompleteSearchBy: Array<any>;
 
     response: Array<any> = [];
@@ -27,12 +34,12 @@ export class AutocompleteComponent implements OnInit, OnChanges, AfterContentIni
     private selected: any = {};
     private indexSelected: number = 0;
 
-    @Output()
-    change: EventEmitter<any> = new EventEmitter<any>();
+    @Output('selectedId')
+    selectedId: EventEmitter<string> = new EventEmitter<string>();
 
     @ViewChild('tpl') tpl;
 
-    constructor(private _el: ElementRef) {
+    constructor(private _el: ElementRef, private control: NgControl) {
     }
 
     ngAfterViewInit() {
@@ -60,8 +67,6 @@ export class AutocompleteComponent implements OnInit, OnChanges, AfterContentIni
     click(event: Event) {
         this.alreadySelected = false;
         this.show(event);
-        // this.selected = this.response[this.indexSelected];
-        // console.log(this.selected);
     }
 
     @HostListener('blur', ['$event'])
@@ -76,7 +81,8 @@ export class AutocompleteComponent implements OnInit, OnChanges, AfterContentIni
         this.indexSelected = index;
         this.focused = false;
         this.selected = this.response[this.indexSelected];
-        console.log(this.selected);
+        this.control.control.setValue(this.selected[this.autocompleteToSelect]);
+        this.selectedId.emit(this.selected['$key']);
         this.determineVisibility();
     }
 
@@ -102,15 +108,25 @@ export class AutocompleteComponent implements OnInit, OnChanges, AfterContentIni
         // Me muevo para abajo en la lista
         if (event.keyCode == 40) {
             this.indexSelected = +((this.indexSelected >= this.response.length ) ? this.response.length : this.indexSelected + 1);
-            // select(this.indexSelected);
-            // moveCursorToEnd();
+
+            let height = this.tpl.nativeElement.querySelector('div').scrollHeight;
+            let scrollSection = height / this.response.length;
+            this.tpl.nativeElement.querySelector('div').scrollTop = scrollSection * (this.indexSelected - 1);
         }
 
         // Me muevo para arriba en la lista
         if (event.keyCode == 38) {
             this.indexSelected = +((this.indexSelected <= 1) ? 1 : this.indexSelected - 1);
-            // select(vm.indexSelected);
-            // moveCursorToEnd();
+
+            let height = this.tpl.nativeElement.querySelector('div').scrollHeight;
+            let scrollSection = height / this.response.length;
+            this.tpl.nativeElement.querySelector('div').scrollTop = scrollSection * (this.indexSelected - 1);
+        }
+
+        // Cuando presiono escape
+        if (event.keyCode == 27) {
+            this.focused = false;
+            this.alreadySelected = true;
         }
 
         // selecciono
@@ -118,7 +134,8 @@ export class AutocompleteComponent implements OnInit, OnChanges, AfterContentIni
             this.focused = false;
             this.alreadySelected = true;
             this.selected = this.response[this.indexSelected - 1];
-            console.log(this.selected);
+            this.control.control.setValue(this.selected[this.autocompleteToSelect]);
+            this.selectedId.emit(this.selected['$key']);
         }
 
         this.determineVisibility();
@@ -129,6 +146,7 @@ export class AutocompleteComponent implements OnInit, OnChanges, AfterContentIni
     }
 
     determineVisibility() {
+
         // if (this.focused) {
         this.visible = true;
         // }

@@ -2,19 +2,27 @@
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
 .ac-autocomplete {
-  position: absolute;
+  position: absolute !important;
   width: 100%;
   top: 100%;
   z-index: 1000;
+  max-height: 100px;
   .ac-autocomplete-container{
     background-color: white;
+    max-height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
     @include shadow(3, black);
     div{
-      margin: 0 !important;
+      margin: 0;
     }
     span{
-      margin: 5px !important;
+      margin: 5px;
     }
+  }
+
+  .ac-autocomplete-row{
+    min-height: 2em;
   }
 
   .ac-autocomplete-seleccionado{
