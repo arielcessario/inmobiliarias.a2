@@ -6,7 +6,7 @@ import {
     EventEmitter,
     OnChanges,
     SimpleChanges,
-    HostListener, ElementRef, AfterContentInit, ViewChild, AfterViewInit
+    HostListener, ElementRef, AfterContentInit, ViewChild, AfterViewInit, Renderer
 }      from '@angular/core';
 import {FireFactoryService} from "../providers/fire.provider";
 import {NgControl} from "@angular/forms";
@@ -39,10 +39,12 @@ export class AutocompleteComponent implements OnInit, OnChanges, AfterContentIni
 
     @ViewChild('tpl') tpl;
 
-    constructor(private _el: ElementRef, private control: NgControl) {
+    constructor(private _el: ElementRef, private control: NgControl, public renderer: Renderer) {
     }
 
     ngAfterViewInit() {
+        // console.log(this._el.nativeElement.getBoundingClientRect());
+        console.log(this.tpl.nativeElement);
     }
 
     ngOnInit() {
@@ -50,6 +52,8 @@ export class AutocompleteComponent implements OnInit, OnChanges, AfterContentIni
 
     ngAfterContentInit() {
         this._el.nativeElement.parentNode.appendChild(this.tpl.nativeElement);
+        this.renderer.setElementStyle(this.tpl.nativeElement, 'margin-top', (this._el.nativeElement.offsetTop + this._el.nativeElement.getBoundingClientRect().height + 3 ) + 'px');
+
     }
 
     @HostListener('keyup', ['$event'])
@@ -105,6 +109,8 @@ export class AutocompleteComponent implements OnInit, OnChanges, AfterContentIni
 
     @HostListener('keydown', ['$event'])
     keyboardInput(event: KeyboardEvent) {
+        // console.log(event.keyCode);
+
         // Me muevo para abajo en la lista
         if (event.keyCode == 40) {
             this.indexSelected = +((this.indexSelected >= this.response.length ) ? this.response.length : this.indexSelected + 1);
@@ -130,7 +136,7 @@ export class AutocompleteComponent implements OnInit, OnChanges, AfterContentIni
         }
 
         // selecciono
-        if (event.keyCode == 13) {
+        if (event.keyCode == 13 || event.keyCode == 9) {
             this.focused = false;
             this.alreadySelected = true;
             this.selected = this.response[this.indexSelected - 1];
@@ -154,7 +160,10 @@ export class AutocompleteComponent implements OnInit, OnChanges, AfterContentIni
 
         if (!this.focused || this.alreadySelected) {
             this.visible = false;
+            return;
         }
+
+        this.tpl.nativeElement.style.top = this._el.nativeElement.style.top;
 
 
     }
