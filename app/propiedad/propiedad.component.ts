@@ -17,8 +17,18 @@ export class PropiedadComponent implements OnInit {
     formPropiedades: FormGroup;
     propiedades: Propiedad;
     monedas: Moneda;
+    monedas_arr: Array<any>;
     generales: General;
     otros: Otro;
+    prueba: Array<any> = [
+        {id: 1, desc: 'alalalal'},
+        {id: 2, desc: 'alalalal'},
+        {id: 3, desc: 'alalalal'},
+        {id: 4, desc: 'alalalal'},
+        {id: 5, desc: 'alalalal'},
+        ];
+
+
 
     constructor() {
         this.propiedades = new Propiedad();
@@ -31,6 +41,9 @@ export class PropiedadComponent implements OnInit {
     ngOnInit() {
 
         this.formPropiedades = this.propiedades.buildForm();
+        this.monedas.get().subscribe(data=>{
+            this.monedas_arr = data;
+        });
 
     }
 

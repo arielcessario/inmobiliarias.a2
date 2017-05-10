@@ -11,6 +11,7 @@ import {Propiedad} from './propiedad.model';
 export class PropiedadLisComponent implements OnInit {
     @Input() propiedades: Propiedad;
     start: number;
+    propiedades_arr: Array<any>;
     // @Output() ret = new EventEmitter<any>();
 
     constructor(// private route: ActivatedRoute,
@@ -25,6 +26,9 @@ export class PropiedadLisComponent implements OnInit {
     ngOnInit() {
 
         this.start = 0;
+        this.propiedades.get().subscribe(data=>{
+            this.propiedades_arr = data;
+        });
         // this.propiedades = new Propiedad();
     }
     countChange(event){

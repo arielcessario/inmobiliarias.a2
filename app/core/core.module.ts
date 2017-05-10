@@ -15,6 +15,7 @@ import {PaginationService}    from './pagination.service';
 
 import {AutocompleteComponent}    from './autocomplete.component';
 import {AutocompleteService}    from './autocomplete.service';
+import {WaitingComponent}    from './waiting.component';
 
 
 @NgModule({
@@ -27,13 +28,15 @@ import {AutocompleteService}    from './autocomplete.service';
         NavComponent,
         PaginationComponent,
         PaginationPipe,
-        AutocompleteComponent
+        AutocompleteComponent,
+        WaitingComponent
     ],
     exports: [
         NavComponent,
         PaginationComponent,
         PaginationPipe,
-        AutocompleteComponent
+        AutocompleteComponent,
+        WaitingComponent
     ],
     providers: [
         PaginationService,

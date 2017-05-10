@@ -19,6 +19,7 @@ var pagination_pipe_1 = require("./pagination.pipe");
 var pagination_service_1 = require("./pagination.service");
 var autocomplete_component_1 = require("./autocomplete.component");
 var autocomplete_service_1 = require("./autocomplete.service");
+var waiting_component_1 = require("./waiting.component");
 var CoreModule = (function () {
     function CoreModule() {
     }
@@ -35,13 +36,15 @@ CoreModule = __decorate([
             nav_component_1.NavComponent,
             pagination_component_1.PaginationComponent,
             pagination_pipe_1.PaginationPipe,
-            autocomplete_component_1.AutocompleteComponent
+            autocomplete_component_1.AutocompleteComponent,
+            waiting_component_1.WaitingComponent
         ],
         exports: [
             nav_component_1.NavComponent,
             pagination_component_1.PaginationComponent,
             pagination_pipe_1.PaginationPipe,
-            autocomplete_component_1.AutocompleteComponent
+            autocomplete_component_1.AutocompleteComponent,
+            waiting_component_1.WaitingComponent
         ],
         providers: [
             pagination_service_1.PaginationService,

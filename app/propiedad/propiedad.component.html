@@ -1,3 +1,4 @@
+<waiting-component></waiting-component>
 <div class="container">
     <form [formGroup]="formPropiedades" novalidate (ngSubmit)="propiedades.onSubmit(formPropiedades)">
 
@@ -40,7 +41,7 @@
         <div class="form-group">
             <label for="">Moneda</label>
             <select formControlName="moneda">
-                <option *ngFor="let i of monedas.get() | async" [value]="i.$key">{{i.nombre}}</option>
+                <option *ngFor="let i of monedas_arr; let x = index" [value]="i.$key">{{i.nombre}}</option>
             </select>
             <small class="text-danger">
                 {{propiedades.formErrors['moneda']}}

@@ -16,7 +16,7 @@
     <!--</md-card-header>-->
     <!--<md-card-content>-->
     <div>
-        <div *ngFor="let item of propiedades.get() | async | paginado:2:start"
+        <div *ngFor="let item of propiedades_arr | paginado:2:start"
              (click)="propiedades.selectItem(item.$key, propiedades.form);">
             <h2>{{item.titulo}}</h2>
             <button (click)="propiedades.remove(item, propiedades.form)">

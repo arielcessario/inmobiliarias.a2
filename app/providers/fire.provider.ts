@@ -27,8 +27,9 @@ export class FireFactoryService {
      * TODO:
      * 1. No guarde los false registros en false, y que si hay uno lo borre
      * 2. Que todos los registros guarden fecha de creación y última actualización?
-     * 3. Mejorar en el constructor si estoy sobreescribiedo el cache
+     * 3. Mejorar en el constructor si estoy sobreescribiedo el cache - FIXED
      * 4. Métodos de abm que no dependan del modelo
+     * 5. Probar el tema que se dispara muchas veces una función que llama a una array async en el ngFor.
      */
 
     /**
@@ -46,12 +47,14 @@ export class FireFactoryService {
         this.fireCache = new FireCacheProvider();
         this.cache = this.fireCache.get();
 
-        this.cache[this.name] = FireFactoryService.af.database.list('/' + this.name, {
-            query: {
-                orderByKey: true
-            }
-        });
-        this.fireCache.set(this.cache);
+        if(this.cache[this.name] == undefined){
+            this.cache[this.name] = FireFactoryService.af.database.list('/' + this.name, {
+                query: {
+                    orderByKey: true
+                }
+            });
+            this.fireCache.set(this.cache);
+        }
 
 
         // Observer para que cuando se actualicen algunas cosas, se pueda ver el cambio desde la clase que hereda.
@@ -372,7 +375,6 @@ export class FireFactoryService {
      * @param form
      */
     onSubmit(form: any) {
-        console.log(form);
         if (!form.valid) {
             return;
         }
